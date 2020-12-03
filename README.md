@@ -18,7 +18,7 @@ As a result, you don't need to install guest utils in your VM if all you need is
 
 Send pull requests to add your own OS dependency install instructions to the README file.
 
-# #Installation:
+## Installation:
  
 - Clone this repo somewhere in your home folder
 - Register a keyboard shortcut in your VM so that it runs this script when a key shortcut is pressed
