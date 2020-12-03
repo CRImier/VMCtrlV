@@ -33,6 +33,9 @@ Send pull requests to add your own OS dependency install instructions to the REA
 
 Steps 1 and 2 are interchangeable.
 
+Also, if you're already in the VM while pressing the key combination, release all shortcut combination keys quickly
+to avoid cursed stuff from happening.
+
 ## License
 
 GPL v3 or later

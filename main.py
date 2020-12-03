@@ -16,6 +16,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
+import os
+import sys
 import string
 import atexit
 import subprocess
@@ -24,11 +26,21 @@ from time import sleep
 from ewmh import EWMH
 from evdev import ecodes, UInput
 
-wmm = EWMH()
-uinput = UInput(name="VMCtrlV")
-atexit.register(uinput.close)
-
 enter_with_shift = True
+
+################################################################
+# Flag to avoid running more than one copy of the script at once
+################################################################
+
+def create_flag():
+    with open("/tmp/vmctrlv.flag", "w") as f:
+        f.write(" ")
+
+def remove_flag():
+    os.remove("/tmp/vmctrlv.flag")
+
+def flag_exists():
+    os.path.exists("/tmp/vmctrlv.flag")
 
 ######################
 # Character input code
@@ -115,9 +127,24 @@ def get_buffer_contents(buffer_type):
     else:
         return output.decode('utf-8')
 
-###############
-# Main function
-###############
+################
+# Main functions
+################
+
+if flag_exists():
+    print("Flag file exists!")
+    sys.exit(1)
+
+create_flag()
+
+wmm = EWMH()
+uinput = UInput(name="VMCtrlV")
+
+def cleanup():
+    remove_flag()
+    uinput.close()
+
+atexit.register(cleanup)
 
 def main():
     # wait until the VM window is the active window
@@ -144,3 +171,4 @@ def main():
     write_text(buffer_contents, uinput)
 
 main()
+
