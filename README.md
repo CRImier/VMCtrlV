@@ -26,7 +26,7 @@ Send pull requests to add your own OS dependency install instructions to the REA
 ## Installation:
  
 - Clone this repo somewhere in your home folder
-- Register a keyboard shortcut in your VM so that it runs this script when a key shortcut is pressed
+- Register a keyboard shortcut in your WM (window manager) so that it runs this script when a key shortcut is pressed
 - This script detects VirtualBox windows by default, edit it if you need to make it work with VMWare/QEMU/whatever
     - then, send a pull request showing your changes to me so that I know how to better incorporate them to make the script universal.
 
