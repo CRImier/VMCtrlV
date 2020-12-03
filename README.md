@@ -1,7 +1,12 @@
 # VMCtrlV
 
 A script that pastes text into a VM by imitating a keyboard. Takes text from your copy-paste buffer and uses uinput to enter it.
-As a result, you don't need to install guest utils in your VM if all you need is copy-paste.
+
+## Reasons:
+
+- You don't need to install guest utils in your VM if all you need is copy-paste.
+- You don't leak all the host OS clipboard contents to the VM
+  - VirtualBox auto-syncs host OS clipboard contents to the VM OS, even when the VM isn't active. As a result, software running in the VM can snoop on the host OS clipboard contents, which is a security flaw.
 
 ## Requirements:
 
